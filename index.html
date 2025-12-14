@@ -6,19 +6,19 @@
 <title>Olympus Gym</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
-    --primary-color:#ff2e2e;
-    --dark-bg:#0b0b0b;
-    --card-bg:#141414;
-    --text-light:#fff;
-    --text-muted:#ccc;
+    --primary:#ff2e2e;
+    --dark:#0b0b0b;
+    --card:#141414;
+    --text:#fff;
+    --muted:#ccc;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Poppins;background:var(--dark-bg);color:var(--text-light)}
+body{font-family:Poppins;background:var(--dark);color:var(--text)}
 
 /* HEADER */
 header{
@@ -26,8 +26,7 @@ header{
     top:0;left:0;
     width:100%;
     padding:15px 60px;
-    background:rgba(0,0,0,.85);
-    backdrop-filter:blur(5px);
+    background:rgba(0,0,0,.9);
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -35,12 +34,11 @@ header{
 }
 header h1{
     font-family:Teko;
-    color:var(--primary-color);
+    color:var(--primary);
     font-size:36px;
 }
 
 /* NAV */
-nav{display:flex;align-items:center}
 nav a{
     color:#fff;
     text-decoration:none;
@@ -50,93 +48,49 @@ nav a{
 nav a::after{
     content:'';
     position:absolute;
-    left:0;bottom:-5px;
+    left:0;bottom:-6px;
     width:0;height:2px;
-    background:var(--primary-color);
+    background:var(--primary);
     transition:.3s;
 }
 nav a:hover::after{width:100%}
 
-/* ===== GALLERY DROPDOWN ===== */
-.dropdown{
-    position:relative;
-    margin-left:25px;
-}
-.dropdown > a::after{display:none}
-
+/* DROPDOWN */
+.dropdown{position:relative;display:inline-block}
 .dropdown-menu{
     position:absolute;
     top:35px;
-    left:0;
     background:#111;
     border-radius:12px;
     min-width:170px;
-    overflow:hidden;
     opacity:0;
     visibility:hidden;
     transform:translateY(10px);
-    transition:
-        opacity .3s ease,
-        transform .3s ease,
-        visibility 0s linear .3s;
-    z-index:1000;
+    transition:.4s;
 }
-
-/* 🔥 BRANCH 1 FULL BOX FILL ANIMATION */
-.dropdown-menu a{
-    position:relative;
-    display:block;
-    padding:14px 20px;
-    font-size:14px;
-    color:#fff;
-    overflow:hidden;
-    z-index:1;
-}
-
-/* red layer */
-.dropdown-menu a::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    width:0%;
-    height:100%;
-    background:var(--primary-color);
-    z-index:-1;
-    transition:width .6s ease; /* slow left → right */
-}
-
-/* hover / visit */
-.dropdown-menu a:hover::before,
-.dropdown-menu a:focus::before{
-    width:100%;
-}
-
-.dropdown-menu a:hover,
-.dropdown-menu a:focus{
-    color:#000;
-}
-
-/* show dropdown */
 .dropdown:hover .dropdown-menu{
     opacity:1;
     visibility:visible;
     transform:translateY(0);
-    transition:
-        opacity .3s ease,
-        transform .3s ease,
-        visibility 0s;
 }
-
-/* HAMBURGER */
-.hamburger{
-    display:none;
-    background:none;
-    border:none;
-    color:var(--primary-color);
-    font-size:30px;
-    cursor:pointer;
+.dropdown-menu a{
+    display:block;
+    padding:14px 20px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
 }
+.dropdown-menu a::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    width:0;
+    background:var(--primary);
+    transition:.6s;
+    z-index:-1;
+}
+.dropdown-menu a:hover::before{width:100%}
+.dropdown-menu a:hover{color:#000}
 
 /* HERO */
 .hero{
@@ -150,40 +104,25 @@ nav a:hover::after{width:100%}
 .hero h2{
     font-family:Teko;
     font-size:80px;
-    line-height:1;
-    opacity:0;
-    transform:translateY(40px);
-    animation:heroText 1.2s ease forwards;
+    animation:fadeUp 1.2s forwards;
 }
-.hero span{color:var(--primary-color)}
-@keyframes heroText{
+.hero span{color:var(--primary)}
+.hero p{color:var(--muted);margin:20px 0}
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
     to{opacity:1;transform:translateY(0)}
 }
-.hero p{
-    color:var(--text-muted);
-    margin:20px 0;
-    opacity:0;
-    animation:fadeUp .8s ease forwards;
-    animation-delay:.8s;
-}
-@keyframes fadeUp{to{opacity:1}}
-
 .btn{
     padding:14px 35px;
-    background:var(--primary-color);
+    background:var(--primary);
     color:#fff;
     border-radius:30px;
     text-decoration:none;
-    font-weight:600;
     transition:.4s;
 }
-.btn:hover{
-    background:#fff;
-    color:var(--primary-color);
-    transform:scale(1.1);
-}
+.btn:hover{background:#fff;color:#000}
 
-/* SECTIONS */
+/* SECTION */
 section{padding:120px 80px}
 h3{
     text-align:center;
@@ -199,77 +138,83 @@ h3{
     gap:30px;
 }
 .card{
-    background:var(--card-bg);
+    background:var(--card);
     padding:35px;
     border-radius:20px;
-    text-align:center;
     transition:.4s;
+    text-align:center;
 }
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 25px #ff2e2e70;
+    transform:translateY(10px);
+    box-shadow:0 0 25px #fff;
 }
+.card p{color:var(--muted);margin-top:10px}
 .card a{
-    margin-top:15px;
     display:inline-block;
-    color:var(--primary-color);
+    margin-top:15px;
+    color:var(--primary);
     text-decoration:none;
     font-weight:600;
 }
+.card a:hover{color:red}
 
-/* PRICING */
-.pricing-box{
+/* MEMBERSHIP */
+.pricing{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
 }
-.price{
-    border:2px solid var(--primary-color);
-    border-radius:20px;
+.price-box{
+    border:2px solid var(--primary);
     padding:40px;
+    border-radius:20px;
     text-align:center;
     transition:.4s;
 }
-.price:hover{
-    background:var(--primary-color);
-    transform:translateY(-12px) scale(1.05);
+.price-box:hover{
+    background:var(--primary);
+    transform:scale(1.05);
 }
-.price:hover h2,
-.price:hover h4{color:#000}
+.price-box:hover *{color:black}
 
 /* CONTACT */
-#contact p{text-align:center;color:var(--text-muted)}
-#contact a{color:var(--primary-color);text-decoration:none}
+#contact p{text-align:center;color:var(--muted)}
+#contact a{color:var(--primary);text-decoration:none}
 
 /* FOOTER */
 footer{
     background:#000;
-    padding:30px;
-    text-align:center;
+    padding:30px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     color:#aaa;
 }
+.social a{
+    margin-left:15px;
+    color:#aaa;
+    font-size:20px;
+    transition:.3s;
+}
+.social a:hover{
+    color:var(--primary);
+    transform:scale(1.2);
+}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    nav{
-        display:none;
-        flex-direction:column;
-        position:fixed;
-        top:0;right:0;
-        width:100%;
-        height:100vh;
-        background:#000;
-        padding-top:80px;
-    }
-    nav.active{display:flex}
-    nav a,.dropdown{margin:15px 0;text-align:center}
-    .dropdown-menu{
-        position:static;
-        opacity:1;
-        visibility:visible;
-        transform:none;
-    }
-    .hamburger{display:block}
+/* DEVELOPED BY RG18 */
+.dev-credit{
+    position:fixed;
+    bottom:12px;
+    right:15px;
+    font-size:12px;
+    color:#777;
+    opacity:.7;
+    z-index:9999;
+    transition:.3s;
+}
+.dev-credit:hover{
+    color:var(--primary);
+    opacity:1;
 }
 </style>
 </head>
@@ -277,71 +222,98 @@ footer{
 <body>
 
 <header>
-    <h1>OLYMPUS GYM</h1>
-    <nav id="nav-links">
-        <a href="index.html">Home</a>
-        <a href="ab.html">About</a>
-        <a href="#programs">Programs</a>
-        <a href="#pricing">Membership</a>
-        <a href="bmi.html">BMI</a>
+<h1>OLYMPUS GYM</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="ab.html">About</a>
+<a href="#programs">Programs</a>
+<a href="#membership">Membership</a>
+<a href="bmi.html">BMI</a>
 
-        <div class="dropdown">
-            <a href="#">Gallery ▾</a>
-            <div class="dropdown-menu">
-                <a href="br.html">Branch 1</a>
-            </div>
-        </div>
+<div class="dropdown">
+<a href="#">Gallery ▾</a>
+<div class="dropdown-menu">
+<a href="br.html">Branch 1</a>
+</div>
+</div>
 
-        <a href="#contact">Contact</a>
-    </nav>
-    <button class="hamburger">☰</button>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
 <div class="hero">
-    <div>
-        <h2>BUILD <span>YOUR BODY</span><br>STRONGER</h2>
-        <p>Professional training • Modern equipment • Real results</p>
-        <a href="f.html" class="btn">Join Now</a>
-    </div>
+<div>
+<h2>BUILD <span>YOUR BODY</span><br>STRONGER</h2>
+<p>Modern equipment, expert trainers and result-oriented workout programs.</p>
+<a href="f.html" class="btn">Join Now</a>
+</div>
 </div>
 
 <section id="programs">
 <h3>OUR PROGRAMS</h3>
 <div class="programs">
-    <div class="card"><h4>Weight Gain</h4><p>Zero se advanced muscle building.</p><a href="wt.html">View Program →</a></div>
-    <div class="card"><h4>Fat Loss</h4><p>Strength & power focused training.</p><a href="ft.html">View Program →</a></div>
-    <div class="card"><h4>Cardio Training</h4><p>Fat burn & stamina workouts.</p><a href="cr.html">View Program →</a></div>
-    <div class="card"><h4>Personal Training</h4><p>One-to-one expert guidance.</p><a href="pt.html">View Program →</a></div>
+<div class="card">
+<h4>Weight Training</h4>
+<p>Build muscle strength with structured gym workouts.</p>
+<a href="wt.html">View Program →</a>
+</div>
+<div class="card">
+<h4>Fat Loss</h4>
+<p>Effective cardio and fat-burn training plans.</p>
+<a href="ft.html">View Program →</a>
+</div>
+<div class="card">
+<h4>Cardio Training</h4>
+<p>Improve stamina and overall fitness.</p>
+<a href="cr.html">View Program →</a>
+</div>
+<div class="card">
+<h4>Personal Training</h4>
+<p>One-to-one expert guidance for faster results.</p>
+<a href="pt.html">View Program →</a>
+</div>
 </div>
 </section>
 
-<section id="pricing">
+<section id="membership">
 <h3>MEMBERSHIP PLANS</h3>
-<div class="pricing-box">
-    <div class="price"><h4>Monthly</h4><h2>₹999</h2></div>
-    <div class="price"><h4>Quarterly</h4><h2>₹2499</h2></div>
-    <div class="price"><h4>Yearly</h4><h2>₹8999</h2></div>
+<div class="pricing">
+<div class="price-box">
+<h2>₹999</h2>
+<p>Monthly Plan</p>
+</div>
+<div class="price-box">
+<h2>₹2499</h2>
+<p>Quarterly Plan</p>
+</div>
+<div class="price-box">
+<h2>₹8999</h2>
+<p>Yearly Plan</p>
+</div>
 </div>
 </section>
 
 <section id="contact">
 <h3>CONTACT US</h3>
-<p>📞 Call / WhatsApp: <a href="tel:9999999999">9XXXXXXXXX</a></p>
-<p>📧 Mail us: <a href="mailto:info@olympusgym.com">info@olympusgym.com</a></p>
+<p>📞 <a href="tel:9999999999">9XXXXXXXXX</a></p>
+<p>📧 <a href="mailto:info@olympusgym.com">info@olympusgym.com</a></p>
 </section>
 
 <footer>
 <p>© 2025 Olympus Gym | Strength • Discipline • Power</p>
+<div class="social">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+</div>
 </footer>
 
-<script>
-const hamburger=document.querySelector('.hamburger');
-const nav=document.querySelector('#nav-links');
-hamburger.onclick=()=>{
-    nav.classList.toggle('active');
-    hamburger.innerHTML=nav.classList.contains('active')?'✕':'☰';
-};
-</script>
+<div class="dev-credit">
+<a href="https://akash917083.github.io/Profile/" target="_blank" style="color:inherit; text-decoration:none;">
+Developed by RG18
+</a>
+</div>
 
 </body>
 </html>
