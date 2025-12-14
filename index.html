@@ -18,7 +18,10 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Poppins;background:var(--dark);color:var(--text)}
+body{font-family:Poppins;background:var(--dark);color:var(--text);}
+
+/* Ensure content isn't hidden behind fixed header on small screens */
+body{padding-top:80px}
 
 /* HEADER */
 header{
@@ -39,6 +42,10 @@ header h1{
 }
 
 /* NAV */
+nav{
+    display:flex;
+    align-items:center;
+}
 nav a{
     color:#fff;
     text-decoration:none;
@@ -54,6 +61,28 @@ nav a::after{
     transition:.3s;
 }
 nav a:hover::after{width:100%}
+
+/* MENU TOGGLE (hamburger) */
+.menu-toggle{
+    display:none;
+    background:none;
+    border:0;
+    cursor:pointer;
+    width:36px;
+    height:28px;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+}
+.menu-toggle span{
+    display:block;
+    height:3px;
+    background:#fff;
+    border-radius:3px;
+    width:100%;
+    transition:all .25s;
+}
 
 /* DROPDOWN */
 .dropdown{position:relative;display:inline-block}
@@ -216,6 +245,70 @@ footer{
     color:var(--primary);
     opacity:1;
 }
+
+/* ======= Responsive / Mobile styles ======= */
+@media (max-width: 900px){
+    header{padding:12px 20px}
+    header h1{font-size:26px}
+    .hero{padding:0 20px}
+    .hero h2{font-size:42px}
+    section{padding:80px 20px}
+    h3{font-size:40px}
+    body{padding-top:70px}
+}
+
+/* Mobile: show hamburger, collapse nav */
+@media (max-width: 768px){
+    .menu-toggle{display:flex}
+    nav{ /* collapsed by default on mobile */
+        position:fixed;
+        top:70px;
+        right:18px;
+        background:#0f0f10;
+        padding:18px 20px;
+        border-radius:12px;
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        min-width:180px;
+        transform:translateX(110%);
+        transition:transform .28s ease, opacity .2s ease;
+        opacity:0;
+        visibility:hidden;
+        z-index:1001;
+    }
+    nav.open{
+        transform:translateX(0);
+        opacity:1;
+        visibility:visible;
+    }
+    nav a{margin-left:0}
+    /* Make dropdown work on tap */
+    .dropdown{width:100%}
+    .dropdown > a::after{display:none}
+    .dropdown-menu{
+        position:static;
+        transform:none;
+        top:auto;
+        background:transparent;
+        opacity:1;
+        visibility:visible;
+        padding:0;
+        margin-top:8px;
+        display:none;
+    }
+    .dropdown.open .dropdown-menu{display:block}
+    .dropdown-menu a{
+        padding:10px 12px;
+        background:#0b0b0b;
+        border-radius:8px;
+        margin-top:6px;
+    }
+    /* Larger clickable targets */
+    nav a, .dropdown > a {padding:8px 6px; display:block}
+    /* make hero height more reasonable on small devices */
+    .hero{height:75vh}
+}
 </style>
 </head>
 
@@ -223,6 +316,14 @@ footer{
 
 <header>
 <h1>OLYMPUS GYM</h1>
+
+<!-- Hamburger button for mobile -->
+<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="ab.html">About</a>
@@ -231,10 +332,10 @@ footer{
 <a href="bmi.html">BMI</a>
 
 <div class="dropdown">
-<a href="#">Gallery ▾</a>
-<div class="dropdown-menu">
-<a href="br.html">Branch 1</a>
-</div>
+    <a href="#">Gallery ▾</a>
+    <div class="dropdown-menu">
+        <a href="br.html">Branch 1</a>
+    </div>
 </div>
 
 <a href="#contact">Contact</a>
@@ -314,6 +415,54 @@ footer{
 Developed by RG18
 </a>
 </div>
+
+<script>
+// Toggle mobile nav
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle && menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open');
+});
+
+// Close menu when a link is clicked (mobile)
+nav && nav.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.tagName === 'A' && !target.closest('.dropdown')) {
+        // close nav on small screens
+        if (window.innerWidth <= 768) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+// Make dropdown open on tap/click for mobile
+document.querySelectorAll('.dropdown > a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        // allow normal navigation if desktop (hover handles it)
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const parent = link.parentElement;
+            parent.classList.toggle('open');
+        }
+    });
+});
+
+// Close nav when clicking outside (optional, improves UX)
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+        const isClickInside = nav.contains(e.target) || menuToggle.contains(e.target);
+        if (!isClickInside) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+        }
+    }
+});
+</script>
 
 </body>
 </html>
