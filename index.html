@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary-color:#ff2e2e;
+    --dark-bg:#0b0b0b;
+    --card-bg:#141414;
+    --text-light:#fff;
+    --text-muted:#ccc;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins;background:var(--dark-bg);color:var(--text-light)}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    padding:15px 60px;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(5px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+header h1{
+    font-family:Teko;
+    color:var(--primary-color);
+    font-size:36px;
+}
+
+/* NAV */
+nav{display:flex;align-items:center}
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+    position:relative;
+}
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-5px;
+    width:0;height:2px;
+    background:var(--primary-color);
+    transition:.3s;
+}
+nav a:hover::after{width:100%}
+
+/* ===== GALLERY DROPDOWN ===== */
+.dropdown{
+    position:relative;
+    margin-left:25px;
+}
+.dropdown > a::after{display:none}
+
+.dropdown-menu{
+    position:absolute;
+    top:35px;
+    left:0;
+    background:#111;
+    border-radius:12px;
+    min-width:170px;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility 0s linear .3s;
+    z-index:1000;
+}
+
+/* 🔥 BRANCH 1 FULL BOX FILL ANIMATION */
+.dropdown-menu a{
+    position:relative;
+    display:block;
+    padding:14px 20px;
+    font-size:14px;
+    color:#fff;
+    overflow:hidden;
+    z-index:1;
+}
+
+/* red layer */
+.dropdown-menu a::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:0%;
+    height:100%;
+    background:var(--primary-color);
+    z-index:-1;
+    transition:width .6s ease; /* slow left → right */
+}
+
+/* hover / visit */
+.dropdown-menu a:hover::before,
+.dropdown-menu a:focus::before{
+    width:100%;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus{
+    color:#000;
+}
+
+/* show dropdown */
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility 0s;
+}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--primary-color);
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(#0009,#000),
+    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438') center/cover;
+    display:flex;
+    align-items:center;
+    padding:0 80px;
+}
+.hero h2{
+    font-family:Teko;
+    font-size:80px;
+    line-height:1;
+    opacity:0;
+    transform:translateY(40px);
+    animation:heroText 1.2s ease forwards;
+}
+.hero span{color:var(--primary-color)}
+@keyframes heroText{
+    to{opacity:1;transform:translateY(0)}
+}
+.hero p{
+    color:var(--text-muted);
+    margin:20px 0;
+    opacity:0;
+    animation:fadeUp .8s ease forwards;
+    animation-delay:.8s;
+}
+@keyframes fadeUp{to{opacity:1}}
+
+.btn{
+    padding:14px 35px;
+    background:var(--primary-color);
+    color:#fff;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.4s;
+}
+.btn:hover{
+    background:#fff;
+    color:var(--primary-color);
+    transform:scale(1.1);
+}
+
+/* SECTIONS */
+section{padding:120px 80px}
+h3{
+    text-align:center;
+    font-family:Teko;
+    font-size:55px;
+    margin-bottom:60px;
+}
+
+/* PROGRAMS */
+.programs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+.card{
+    background:var(--card-bg);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    transition:.4s;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #ff2e2e70;
+}
+.card a{
+    margin-top:15px;
+    display:inline-block;
+    color:var(--primary-color);
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* PRICING */
+.pricing-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+.price{
+    border:2px solid var(--primary-color);
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    transition:.4s;
+}
+.price:hover{
+    background:var(--primary-color);
+    transform:translateY(-12px) scale(1.05);
+}
+.price:hover h2,
+.price:hover h4{color:#000}
+
+/* CONTACT */
+#contact p{text-align:center;color:var(--text-muted)}
+#contact a{color:var(--primary-color);text-decoration:none}
+
+/* FOOTER */
+footer{
+    background:#000;
+    padding:30px;
+    text-align:center;
+    color:#aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav{
+        display:none;
+        flex-direction:column;
+        position:fixed;
+        top:0;right:0;
+        width:100%;
+        height:100vh;
+        background:#000;
+        padding-top:80px;
+    }
+    nav.active{display:flex}
+    nav a,.dropdown{margin:15px 0;text-align:center}
+    .dropdown-menu{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+    }
+    .hamburger{display:block}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>OLYMPUS GYM</h1>
+    <nav id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="ab.html">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#pricing">Membership</a>
+        <a href="bmi.html">BMI</a>
+
+        <div class="dropdown">
+            <a href="#">Gallery ▾</a>
+            <div class="dropdown-menu">
+                <a href="br.html">Branch 1</a>
+            </div>
+        </div>
+
+        <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger">☰</button>
+</header>
+
+<div class="hero">
+    <div>
+        <h2>BUILD <span>YOUR BODY</span><br>STRONGER</h2>
+        <p>Professional training • Modern equipment • Real results</p>
+        <a href="f.html" class="btn">Join Now</a>
+    </div>
+</div>
+
+<section id="programs">
+<h3>OUR PROGRAMS</h3>
+<div class="programs">
+    <div class="card"><h4>Weight Gain</h4><p>Zero se advanced muscle building.</p><a href="wt.html">View Program →</a></div>
+    <div class="card"><h4>Fat Loss</h4><p>Strength & power focused training.</p><a href="ft.html">View Program →</a></div>
+    <div class="card"><h4>Cardio Training</h4><p>Fat burn & stamina workouts.</p><a href="cr.html">View Program →</a></div>
+    <div class="card"><h4>Personal Training</h4><p>One-to-one expert guidance.</p><a href="pt.html">View Program →</a></div>
+</div>
+</section>
+
+<section id="pricing">
+<h3>MEMBERSHIP PLANS</h3>
+<div class="pricing-box">
+    <div class="price"><h4>Monthly</h4><h2>₹999</h2></div>
+    <div class="price"><h4>Quarterly</h4><h2>₹2499</h2></div>
+    <div class="price"><h4>Yearly</h4><h2>₹8999</h2></div>
+</div>
+</section>
+
+<section id="contact">
+<h3>CONTACT US</h3>
+<p>📞 Call / WhatsApp: <a href="tel:9999999999">9XXXXXXXXX</a></p>
+<p>📧 Mail us: <a href="mailto:info@olympusgym.com">info@olympusgym.com</a></p>
+</section>
+
+<footer>
+<p>© 2025 Olympus Gym | Strength • Discipline • Power</p>
+</footer>
+
+<script>
+const hamburger=document.querySelector('.hamburger');
+const nav=document.querySelector('#nav-links');
+hamburger.onclick=()=>{
+    nav.classList.toggle('active');
+    hamburger.innerHTML=nav.classList.contains('active')?'✕':'☰';
+};
+</script>
+
+</body>
+</html>
