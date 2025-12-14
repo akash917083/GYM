@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  padding:15px 60px;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1{
+  font-family:Teko;
+  font-size:36px;
+  color:#ff2e2e;
+}
+.back{
+  text-decoration:none;
+  color:#fff;
+  border:2px solid #ff2e2e;
+  padding:8px 22px;
+  border-radius:25px;
+  transition:.3s;
+}
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+
+/* HERO */
+.hero{
+  height:45vh;
+  background:linear-gradient(#000b,#000),
+  url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero h2{
+  font-family:Teko;
+  font-size:75px;
+  animation:fadeDown 1.2s ease;
+}
+.hero span{color:#ff2e2e}
+
+/* INFO SECTION */
+.info{
+  padding:60px 20px 0;
+  text-align:center;
+  max-width:900px;
+  margin:auto;
+}
+.info p{
+  color:#ccc;
+  line-height:1.8;
+  margin-top:15px;
+}
+
+/* BMI SECTION */
+section{padding:60px 20px}
+.bmi-box{
+  max-width:440px;
+  margin:auto;
+  background:#141414;
+  padding:45px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 0 30px #ff2e2e55;
+  animation:zoomIn 1s ease;
+}
+.bmi-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:30px;
+  outline:none;
+  text-align:center;
+  font-size:15px;
+}
+.bmi-box button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:#ff2e2e;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+.bmi-box button:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 5px #ff2e2e;
+  transform:translateY(-2px);
+}
+
+#result{
+  margin-top:25px;
+  font-size:18px;
+  font-weight:600;
+  animation:fadeUp .6s ease;
+}
+.program-btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:10px 35px;
+  border-radius:30px;
+  background:#ff2e2e;
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
+}
+.program-btn:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 18px #ff2e2e;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:25px;
+  text-align:center;
+  color:#aaa;
+  margin-top:40px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes zoomIn{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{padding:15px 20px}
+  .hero h2{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OLYMPUS GYM</h1>
+  <a href="gym.html" class="back">⬅ Back to Home</a>
+</header>
+
+<div class="hero">
+  <h2>BMI <span>CALCULATOR</span></h2>
+</div>
+
+<div class="info">
+  <p>
+    Body Mass Index (BMI) helps you understand whether your body weight
+    is healthy for your height.  
+    Use this calculator to track your fitness level and choose the right
+    training program at Olympus Gym.
+  </p>
+</div>
+
+<section>
+  <div class="bmi-box">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <button onclick="bmi()">Calculate BMI</button>
+    <div id="result"></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Olympus Gym | Strength • Discipline • Power
+</footer>
+
+<script>
+function bmi(){
+  let h=document.getElementById("height").value;
+  let w=document.getElementById("weight").value;
+  let r=document.getElementById("result");
+
+  if(h==""||w==""){
+    r.innerHTML="❌ Please enter height & weight";
+    return;
+  }
+
+  let bmi=(w/((h/100)*(h/100))).toFixed(1);
+  let msg="", link="#";
+
+  if(bmi<18.5){
+    msg="Underweight – Muscle & Weight Gain Recommended 💪";
+    link="wt.html";
+  }
+  else if(bmi<25){
+    msg="Normal – Maintain Strength & Fitness 🔥";
+    link="wt.html";
+  }
+  else if(bmi<30){
+    msg="Overweight – Fat Loss Program Recommended 🔥";
+    link="ft.html";
+  }
+  else{
+    msg="Obese – Personal Training Strongly Advised 🚨";
+    link="pt.html";
+  }
+
+  r.innerHTML=`
+    BMI: <span style="color:#ff2e2e">${bmi}</span><br>
+    ${msg}<br>
+    <a href="${link}" class="program-btn">View Recommended Program</a>
+  `;
+}
+</script>
+
+</body>
+</html>

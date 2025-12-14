@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weight Gain | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  padding:20px 60px;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1{
+  font-family:Teko;
+  color:#ff2e2e;
+  font-size:36px;
+}
+.back{
+  color:#fff;
+  border:2px solid #ff2e2e;
+  padding:8px 22px;
+  border-radius:25px;
+  text-decoration:none;
+  transition:.3s;
+}
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+
+/* HERO */
+.hero{
+  height:50vh;
+  background:linear-gradient(#000b,#000),
+  url('https://images.unsplash.com/photo-1599058917212-d750089bc07e') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero h2{
+  font-family:Teko;
+  font-size:75px;
+  animation:fadeDown 1.2s ease;
+}
+.hero span{color:#ff2e2e}
+
+/* CONTENT */
+section{
+  padding:80px;
+  max-width:1100px;
+  margin:auto;
+}
+section h3{
+  font-family:Teko;
+  font-size:45px;
+  margin-bottom:15px;
+}
+p{
+  color:#ccc;
+  line-height:1.9;
+  margin-bottom:22px;
+}
+
+/* LIST */
+ul{margin:25px 0}
+li{
+  margin-bottom:12px;
+  color:#ddd;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+.box{
+  background:#141414;
+  padding:30px;
+  border-radius:20px;
+  transition:.4s;
+}
+.box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px #ff2e2e70; /* Updated box shadow */
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  margin-top:60px;
+}
+.cta a{
+  display:inline-block;
+  padding:15px 45px;
+  background:#ff2e2e;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  transition:.4s;
+}
+.cta a:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 5px #ff2e2e;
+  transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:25px;
+  text-align:center;
+  color:#aaa;
+  margin-top:40px;
+}
+
+/* ANIMATION */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{padding:20px}
+  section{padding:60px 25px}
+  .hero h2{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OLYMPUS GYM</h1>
+  <a href="gym.html" class="back">⬅ Back to Home</a>
+</header>
+
+<div class="hero">
+  <h2>WEIGHT <span>GAIN</span></h2>
+</div>
+
+<section>
+  <h3>Start From Zero</h3>
+  <p>
+    At Olympus Gym, weight gain training starts from the zero level.
+    We focus on correct posture, proper form, and building foundational strength
+    to prepare your body for muscle growth.
+  </p>
+
+  <h3>Structured Muscle Growth</h3>
+  <p>
+    Our weight gain programs follow a step-by-step approach using
+    progressive overload, compound exercises, and proper recovery.
+    This ensures steady muscle growth without injuries.
+  </p>
+
+  <ul>
+    <li>✔ Beginner to Advanced Muscle Gain Programs</li>
+    <li>✔ Clean Bulking & Lean Mass Development</li>
+    <li>✔ Workout + Nutrition Planning</li>
+    <li>✔ Natural Strength & Aesthetic Physique</li>
+  </ul>
+
+  <div class="features">
+    <div class="box">
+      <h4>Foundation Training</h4>
+      <p>Posture correction, joint safety, and core strength.</p>
+    </div>
+    <div class="box">
+      <h4>Progressive Overload</h4>
+      <p>Gradual increase in resistance for muscle growth.</p>
+    </div>
+    <div class="box">
+      <h4>Clean Bulking</h4>
+      <p>Quality weight gain with proper nutrition.</p>
+    </div>
+    <div class="box">
+      <h4>Long-Term Results</h4>
+      <p>Sustainable muscle development with injury prevention.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="login.html">Start Weight Gain</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Olympus Gym | Strength • Discipline • Power
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fat Loss Training | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  padding:20px 60px;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+h1{
+  font-family:Teko;
+  color:#ff2e2e;
+  font-size:36px;
+}
+.back{
+  color:#fff;
+  border:2px solid #ff2e2e;
+  padding:8px 22px;
+  border-radius:25px;
+  text-decoration:none;
+  transition:.3s;
+}
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+
+/* HERO */
+.hero{
+  height:50vh;
+  background:linear-gradient(#000b,#000),
+  url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero h2{
+  font-family:Teko;
+  font-size:75px;
+  animation:fadeDown 1.2s ease;
+}
+.hero span{color:#ff2e2e}
+
+/* CONTENT */
+section{
+  padding:80px;
+  max-width:1000px;
+  margin:auto;
+}
+p{
+  color:#ccc;
+  line-height:1.9;
+  margin-bottom:22px;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+.feature{
+  background:#141414;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  transition:.4s;
+}
+.feature:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 20px #ff2e2e70;
+}
+.feature h4{
+  margin-bottom:10px;
+  color:#ff2e2e;
+}
+
+/* CTA BUTTON */
+.cta{
+  text-align:center;
+  margin-top:60px;
+}
+.cta a{
+  display:inline-block;
+  padding:15px 45px;
+  background:#ff2e2e;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  transition:.4s;
+}
+.cta a:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 5px #ff2e2e;
+  transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:25px;
+  text-align:center;
+  color:#aaa;
+  margin-top:40px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{padding:20px}
+  section{padding:60px 25px}
+  .hero h2{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OLYMPUS GYM</h1>
+  <a href="gym.html" class="back">⬅ Back to Home</a>
+</header>
+
+<div class="hero">
+  <h2>FAT <span>LOSS</span></h2>
+</div>
+
+<section>
+  <p>
+    Fat Loss training at Olympus Gym is designed to reduce body fat
+    while preserving muscle strength and energy levels.
+    Our scientifically planned workouts help you burn calories
+    efficiently and safely.
+  </p>
+
+  <p>
+    Beginners start with low to moderate intensity exercises including
+    steady-state cardio, functional movements, and basic strength training.
+    As endurance improves, intensity is increased through HIIT and circuit training.
+  </p>
+
+  <p>
+    Along with workouts, our trainers provide nutrition guidance and
+    lifestyle recommendations to ensure sustainable fat loss and
+    long-term health results.
+  </p>
+
+  <div class="features">
+    <div class="feature">
+      <h4>🔥 High Calorie Burn</h4>
+      <p>Workouts focused on maximum fat burn.</p>
+    </div>
+    <div class="feature">
+      <h4>💪 Muscle Protection</h4>
+      <p>Maintain lean muscle while losing fat.</p>
+    </div>
+    <div class="feature">
+      <h4>🥗 Diet Guidance</h4>
+      <p>Simple nutrition plans for faster results.</p>
+    </div>
+    <div class="feature">
+      <h4>⏱️ HIIT Training</h4>
+      <p>Short, intense workouts with proven results.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="login.html">Start Fat Loss</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Olympus Gym | Strength • Discipline • Power
+</footer>
+
+</body>
+</html>

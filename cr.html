@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardio Training | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins;background:#0b0b0b;color:#fff}
+
+/* HEADER */
+header{
+  padding:20px 60px;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+header h1{
+  font-family:Teko;
+  color:#ff2e2e;
+  font-size:36px;
+}
+.back{
+  color:#fff;
+  border:2px solid #ff2e2e;
+  padding:8px 22px;
+  border-radius:25px;
+  text-decoration:none;
+  transition:.3s;
+}
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+/* HERO */
+.hero{
+  height:50vh;
+  background:linear-gradient(#0009,#000),
+  url('https://images.unsplash.com/photo-1549576490-b0b4831ef60a') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero h2{
+  font-family:Teko;
+  font-size:70px;
+  animation:fadeDown 1.2s ease; /* Changed from no animation/zoom */
+}
+.hero span{color:#ff2e2e}
+
+/* CONTENT */
+section{
+  padding:80px 100px;
+}
+p{
+  color:#ccc;
+  line-height:1.8;
+  margin-bottom:20px;
+  /* Removed opacity and fadeIn animation */
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+.box{
+  background:#141414;
+  padding:30px;
+  border-radius:20px;
+  transition:.4s;
+}
+.box:hover{
+  transform:translateY(-10px); /* Removed scale(1.05) */
+  box-shadow:0 0 25px #ff2e2e70;
+}
+.box h4{color:#ff2e2e; margin-bottom:10px;}
+
+/* CTA */
+.cta{
+  text-align:center;
+  margin-top:60px;
+}
+.cta a{
+  display:inline-block;
+  padding:16px 45px;
+  background:#ff2e2e;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  transition:.4s;
+  /* Removed pulse animation */
+}
+.cta a:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 5px #ff2e2e;
+  transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:25px;
+  text-align:center;
+  color:#aaa;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{ /* Added keyframes */
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+/* Removed @keyframes zoom and @keyframes pulse */
+/* Removed @keyframes fadeIn */
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  section{padding:60px 25px}
+  .hero h2{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OLYMPUS GYM</h1>
+  <a href="gym.html" class="back">⬅ Back to Home</a>
+</header>
+
+<div class="hero">
+  <h2>CARDIO <span>TRAINING</span></h2>
+</div>
+
+<section>
+  <p>
+    Cardio training is essential for fat loss, stamina building, and improving heart health.
+    It boosts metabolism, enhances endurance, and improves overall fitness.
+  </p>
+
+  <p>
+    Beginners start with low-intensity cardio like treadmill walking, cycling, and cross trainers.
+    Advanced workouts include HIIT (High-Intensity Interval Training) for faster fat burn and performance enhancement.
+  </p>
+
+  <p>
+    Along with workouts, we provide proper diet guidance and lifestyle tips
+    to ensure effective results and long-term fitness.
+  </p>
+
+  <div class="features">
+    <div class="box">
+      <h4>Fat Burning</h4>
+      <p>Workouts designed to reduce body fat safely.</p>
+    </div>
+    <div class="box">
+      <h4>Heart Health</h4>
+      <p>Strengthens the heart and improves blood circulation.</p>
+    </div>
+    <div class="box">
+      <h4>Improved Stamina</h4>
+      <p>Boosts endurance and energy levels.</p>
+    </div>
+    <div class="box">
+      <h4>HIIT Training</h4>
+      <p>Advanced cardio plans for faster results.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="login.html">Start Cardio Training</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Olympus Gym | Strength • Discipline • Power</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Training | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins;background:#0b0b0b;color:#fff}
+
+/* HEADER */
+header{
+  padding:20px 60px;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1{
+  font-family:Teko;
+  color:#ff2e2e;
+  font-size:36px;
+}
+.back{
+  color:#fff;
+  border:2px solid #ff2e2e;
+  padding:8px 22px;
+  border-radius:25px;
+  text-decoration:none;
+  transition:.3s;
+}
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+
+/* HERO */
+.hero{
+  height:50vh;
+  background:linear-gradient(#0009,#000),
+  url('https://images.unsplash.com/photo-1571019613576-2b22c76fd955') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero h2{
+  font-family:Teko;
+  font-size:70px;
+  animation:fadeDown 1.2s ease; /* Added fadeDown animation */
+}
+.hero span{color:#ff2e2e}
+
+/* CONTENT */
+section{
+  padding:80px 100px;
+}
+section h3{
+  font-family:Teko;
+  font-size:45px;
+  margin-bottom:20px;
+}
+p{
+  color:#ccc;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+.box{
+  background:#141414;
+  padding:30px;
+  border-radius:20px;
+  transition:.4s;
+}
+.box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px #ff2e2e70;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  margin-top:60px;
+}
+.cta a{
+  display:inline-block;
+  padding:14px 40px;
+  background:#ff2e2e;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  transition:.4s;
+}
+.cta a:hover{
+  background:#fff;
+  color:#ff2e2e;
+  box-shadow:0 0 5px #ff2e2e;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:25px;
+  text-align:center;
+  color:#aaa;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{ /* Added keyframes */
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  section{padding:60px 25px}
+  .hero h2{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OLYMPUS GYM</h1>
+  <a href="gym.html" class="back">⬅ Back to Home</a>
+</header>
+
+<div class="hero">
+  <h2>PERSONAL <span>TRAINING</span></h2>
+</div>
+
+<section>
+  <h3>What Is Personal Training?</h3>
+  <p>
+    Personal Training is a one-on-one training program where a certified trainer
+    focuses completely on you. Your workouts are designed according to your body type,
+    fitness level, and goals.
+  </p>
+
+  <h3>How We Start (Beginner to Advanced)</h3>
+  <p>
+    We begin with a complete body assessment including strength, stamina, and mobility.
+    Then we create a step-by-step workout plan with proper training, recovery, and progress tracking
+    to ensure safe and effective results.
+  </p>
+
+  <div class="features">
+    <div class="box">
+      <h4>One-on-One Coaching</h4>
+      <p>Dedicated trainer attention for faster progress.</p>
+    </div>
+    <div class="box">
+      <h4>Customized Diet Plan</h4>
+      <p>Nutrition plans for muscle gain or fat loss.</p>
+    </div>
+    <div class="box">
+      <h4>Faster Results</h4>
+      <p>Consistent monitoring and goal-based training.</p>
+    </div>
+    <div class="box">
+      <h4>Injury-Free Training</h4>
+      <p>Correct form and technique to prevent injuries.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="login.html">Join Personal Training</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Olympus Gym | Strength • Discipline • Power</p>
+</footer>
+
+</body>
+</html>

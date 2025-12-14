@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Olympus Gym</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0b0b0b;
+      color:#fff;
+    }
+
+    header{
+      padding:20px 60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#000;
+    }
+    header h1{
+      font-family:'Teko',sans-serif;
+      font-size:36px;
+      color:#ff2e2e;
+    }
+    .back{
+      text-decoration:none;
+      color:#fff;
+      border:2px solid #ff2e2e;
+      padding:8px 20px;
+      border-radius:25px;
+      transition:.3s;
+    }
+.back:hover{
+  background:#ff2e2e;
+  transform:translateX(-5px);
+}
+
+    .about-hero{
+      height:50vh;
+      background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
+      url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74') center/cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    .about-hero h2{
+      font-family:'Teko',sans-serif;
+      font-size:70px;
+      animation:fadeDown 1.2s ease; /* Added fadeDown animation */
+    }
+    .about-hero span{color:#ff2e2e}
+
+    section{padding:80px}
+    section h3{
+      font-family:'Teko',sans-serif;
+      font-size:45px;
+      margin-bottom:20px;
+    }
+    section p{color:#ccc;line-height:1.8}
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+      margin-top:40px;
+    }
+    .box{
+      background:#141414;
+      padding:30px;
+      border-radius:20px;
+      transition:.3s;
+    }
+    .box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 20px #ff2e2e60;
+    }
+
+    footer{
+      background:#000;
+      padding:25px;
+      text-align:center;
+      color:#aaa;
+    }
+    
+    /* ANIMATIONS */
+    @keyframes fadeDown{ /* Added keyframes */
+      from{opacity:0;transform:translateY(-30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media(max-width:768px){
+      header{padding:20px}
+      section{padding:50px 20px}
+      .about-hero h2{font-size:50px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Olympus GYM</h1>
+    <a href="gym.html" class="back">⬅ Back to Home</a>
+  </header>
+
+  <div class="about-hero">
+    <h2>ABOUT <span>OLYMPUS GYM</span></h2>
+  </div>
+
+  <section>
+    <h3>Who We Are</h3>
+    <p>
+      Olympus Gym is a premium fitness center focused on strength, discipline, and transformation. 
+      Our mission is to help every member build confidence, power, and a healthy lifestyle.
+    </p>
+
+    <div class="features">
+      <div class="box">
+        <h4>Modern Equipment</h4>
+        <p>Latest machines for strength & cardio training.</p>
+      </div>
+      <div class="box">
+        <h4>Certified Trainers</h4>
+        <p>Experienced trainers for safe & effective workouts.</p>
+      </div>
+      <div class="box">
+        <h4>Motivating Environment</h4>
+        <p>Gym atmosphere that pushes you beyond limits.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Olympus Gym | Strength • Discipline • Power</p>
+  </footer>
+
+</body>
+</html>

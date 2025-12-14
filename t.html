@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Olympus Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#ff2e2e;
+    --dark:#0b0b0b;
+}
+
+body{
+    margin:0;
+    font-family:Poppins;
+    background:linear-gradient(#000c,#000c),
+    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438') center/cover;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    text-align:center;
+}
+
+/* CARD */
+.thank-box{
+    background:rgba(20,20,20,0.95);
+    padding:45px;
+    border-radius:22px;
+    max-width:420px;
+    width:90%;
+    box-shadow:0 0 15px #ff2e2e70;
+    animation:zoomIn .9s ease forwards;
+    opacity:0;
+}
+
+@keyframes zoomIn{
+    from{transform:scale(.85);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+h1{
+    font-family:Teko;
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+p{
+    color:#ccc;
+    font-size:15px;
+    margin-bottom:25px;
+}
+
+/* BUTTON */
+a{
+    display:inline-block;
+    padding:13px 32px;
+    background:var(--primary);
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.4s;
+}
+
+a:hover{
+    background:#fff;
+    color:var(--primary);
+    box-shadow:0 0 5px var(--primary);
+    transform:scale(1.05);
+}
+
+/* CHECK ICON */
+.check{
+    font-size:55px;
+    color:var(--primary);
+    margin-bottom:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="thank-box">
+    <div class="check">✔</div>
+    <h1>Thank You!</h1>
+    <p>Your membership request has been submitted successfully.<br>
+    Our team will contact you soon.</p>
+
+    <a href="gym.html">Back to Home</a>
+</div>
+
+</body>
+</html>
