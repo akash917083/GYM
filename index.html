@@ -2,469 +2,2443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GYM</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Vanta Athletics — A premium private performance club for people who train with purpose."
+  />
+  <meta name="theme-color" content="#0b0c0b" />
 
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Poppins&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>VANTA ATHLETICS | Discipline. Elevated.</title>
 
-<style>
-:root{
-    --primary:#ff2e2e;
-    --dark:#0b0b0b;
-    --card:#141414;
-    --text:#fff;
-    --muted:#ccc;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Poppins;background:var(--dark);color:var(--text);}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-/* Ensure content isn't hidden behind fixed header on small screens */
-body{padding-top:80px}
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    rel="stylesheet"
+  />
 
-/* HEADER */
-header{
-    position:fixed;
-    top:0;left:0;
-    width:100%;
-    padding:15px 60px;
-    background:rgba(0,0,0,.9);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
-}
-header h1{
-    font-family:Teko;
-    color:var(--primary);
-    font-size:36px;
-}
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-/* NAV */
-nav{
-    display:flex;
-    align-items:center;
-}
-nav a{
-    color:#fff;
-    text-decoration:none;
-    margin-left:25px;
-    position:relative;
-}
-nav a::after{
-    content:'';
-    position:absolute;
-    left:0;bottom:-6px;
-    width:0;height:2px;
-    background:var(--primary);
-    transition:.3s;
-}
-nav a:hover::after{width:100%}
-
-/* MENU TOGGLE (hamburger) */
-.menu-toggle{
-    display:none;
-    background:none;
-    border:0;
-    cursor:pointer;
-    width:36px;
-    height:28px;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:5px;
-}
-.menu-toggle span{
-    display:block;
-    height:3px;
-    background:#fff;
-    border-radius:3px;
-    width:100%;
-    transition:all .25s;
-}
-
-/* DROPDOWN */
-.dropdown{position:relative;display:inline-block}
-.dropdown-menu{
-    position:absolute;
-    top:35px;
-    background:#111;
-    border-radius:12px;
-    min-width:170px;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(10px);
-    transition:.4s;
-}
-.dropdown:hover .dropdown-menu{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-.dropdown-menu a{
-    display:block;
-    padding:14px 20px;
-    color:#fff;
-    position:relative;
-    overflow:hidden;
-}
-.dropdown-menu a::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    width:0;
-    background:var(--primary);
-    transition:.6s;
-    z-index:-1;
-}
-.dropdown-menu a:hover::before{width:100%}
-.dropdown-menu a:hover{color:#000}
-
-/* HERO */
-.hero{
-    height:100vh;
-    background:linear-gradient(#0009,#000),
-    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438') center/cover;
-    display:flex;
-    align-items:center;
-    padding:0 80px;
-}
-.hero h2{
-    font-family:Teko;
-    font-size:80px;
-    animation:fadeUp 1.2s forwards;
-}
-.hero span{color:var(--primary)}
-.hero p{color:var(--muted);margin:20px 0}
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px)}
-    to{opacity:1;transform:translateY(0)}
-}
-.btn{
-    padding:14px 35px;
-    background:var(--primary);
-    color:#fff;
-    border-radius:30px;
-    text-decoration:none;
-    transition:.4s;
-}
-.btn:hover{background:#fff;color:#000}
-
-/* SECTION */
-section{padding:120px 80px}
-h3{
-    text-align:center;
-    font-family:Teko;
-    font-size:55px;
-    margin-bottom:60px;
-}
-
-/* PROGRAMS */
-.programs{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-.card{
-    background:var(--card);
-    padding:35px;
-    border-radius:20px;
-    transition:.4s;
-    text-align:center;
-}
-.card:hover{
-    transform:translateY(10px);
-    box-shadow:0 0 25px #fff;
-}
-.card p{color:var(--muted);margin-top:10px}
-.card a{
-    display:inline-block;
-    margin-top:15px;
-    color:var(--primary);
-    text-decoration:none;
-    font-weight:600;
-}
-.card a:hover{color:red}
-
-/* MEMBERSHIP */
-.pricing{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-.price-box{
-    border:2px solid var(--primary);
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    transition:.4s;
-}
-.price-box:hover{
-    background:var(--primary);
-    transform:scale(1.05);
-}
-.price-box:hover *{color:black}
-
-/* CONTACT */
-#contact p{text-align:center;color:var(--muted)}
-#contact a{color:var(--primary);text-decoration:none}
-
-/* FOOTER */
-footer{
-    background:#000;
-    padding:30px 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    color:#aaa;
-}
-.social a{
-    margin-left:15px;
-    color:#aaa;
-    font-size:20px;
-    transition:.3s;
-}
-.social a:hover{
-    color:var(--primary);
-    transform:scale(1.2);
-}
-
-/* DEVELOPED BY RG18 */
-.dev-credit{
-    position:fixed;
-    bottom:12px;
-    right:15px;
-    font-size:12px;
-    color:#777;
-    opacity:.7;
-    z-index:9999;
-    transition:.3s;
-}
-.dev-credit:hover{
-    color:var(--primary);
-    opacity:1;
-}
-
-/* ======= Responsive / Mobile styles ======= */
-@media (max-width: 900px){
-    header{padding:12px 20px}
-    header h1{font-size:26px}
-    .hero{padding:0 20px}
-    .hero h2{font-size:42px}
-    section{padding:80px 20px}
-    h3{font-size:40px}
-    body{padding-top:70px}
-}
-
-/* Mobile: show hamburger, collapse nav */
-@media (max-width: 768px){
-    .menu-toggle{display:flex}
-    nav{ /* collapsed by default on mobile */
-        position:fixed;
-        top:70px;
-        right:18px;
-        background:#0f0f10;
-        padding:18px 20px;
-        border-radius:12px;
-        display:flex;
-        flex-direction:column;
-        gap:12px;
-        min-width:180px;
-        transform:translateX(110%);
-        transition:transform .28s ease, opacity .2s ease;
-        opacity:0;
-        visibility:hidden;
-        z-index:1001;
+  <style>
+    :root {
+      --black: #090a09;
+      --deep-black: #050605;
+      --surface: #101210;
+      --surface-2: #171a17;
+      --surface-3: #20231f;
+      --ivory: #f2efe8;
+      --muted: #9b9d94;
+      --muted-light: #c2c4bb;
+      --gold: #b99862;
+      --gold-light: #d8bd8b;
+      --gold-dark: #80643c;
+      --line: rgba(242, 239, 232, 0.14);
+      --white-line: rgba(255, 255, 255, 0.22);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+      --max-width: 1240px;
+      --radius: 3px;
     }
-    nav.open{
-        transform:translateX(0);
-        opacity:1;
-        visibility:visible;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    nav a{margin-left:0}
-    /* Make dropdown work on tap */
-    .dropdown{width:100%}
-    .dropdown > a::after{display:none}
-    .dropdown-menu{
-        position:static;
-        transform:none;
-        top:auto;
-        background:transparent;
-        opacity:1;
-        visibility:visible;
-        padding:0;
-        margin-top:8px;
-        display:none;
+
+    html {
+      scroll-behavior: smooth;
     }
-    .dropdown.open .dropdown-menu{display:block}
-    .dropdown-menu a{
-        padding:10px 12px;
-        background:#0b0b0b;
-        border-radius:8px;
-        margin-top:6px;
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--black);
+      color: var(--ivory);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
     }
-    /* Larger clickable targets */
-    nav a, .dropdown > a {padding:8px 6px; display:block}
-    /* make hero height more reasonable on small devices */
-    .hero{height:75vh}
-}
-</style>
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .serif {
+      font-family: "Playfair Display", serif;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 125px 0;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+      margin-top: 18px;
+      color: var(--ivory);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+    }
+
+    .section-title p {
+      max-width: 550px;
+      margin-top: 20px;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 51px;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 0 24px;
+      border: 1px solid var(--gold);
+      border-radius: 1px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .button-dark {
+      border-color: var(--ivory);
+      background: var(--ivory);
+      color: var(--black);
+    }
+
+    .button-dark:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-light);
+    }
+
+    .button-outline {
+      border-color: rgba(255, 255, 255, 0.43);
+      background: transparent;
+      color: var(--ivory);
+    }
+
+    .button-outline:hover {
+      border-color: var(--gold-light);
+      color: var(--black);
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .text-link span {
+      transition: transform 0.3s ease;
+    }
+
+    .text-link:hover span {
+      transform: translateX(5px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Top announcement */
+    .announcement {
+      position: relative;
+      z-index: 1200;
+      min-height: 31px;
+      display: grid;
+      place-items: center;
+      padding: 7px 20px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      z-index: 1000;
+      top: 31px;
+      width: 100%;
+      border-bottom: 1px solid transparent;
+      background: transparent;
+      transition: 0.35s ease;
+    }
+
+    header.scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(9, 10, 9, 0.94);
+      backdrop-filter: blur(15px);
+    }
+
+    .nav-inner {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 35px;
+      height: 35px;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: "Playfair Display", serif;
+      font-size: 0.94rem;
+    }
+
+    .brand-name {
+      color: var(--ivory);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.19em;
+    }
+
+    .brand-name small {
+      display: block;
+      margin-top: 1px;
+      color: var(--gold-light);
+      font-size: 0.45rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      position: relative;
+      color: rgba(242, 239, 232, 0.79);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -9px;
+      left: 0;
+      height: 1px;
+      background: var(--gold-light);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .header-cta {
+      min-height: 42px;
+      padding-inline: 17px;
+      font-size: 0.62rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 41px;
+      height: 41px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ivory);
+      font-size: 1.1rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 850px;
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(5, 6, 5, 0.92) 0%, rgba(5, 6, 5, 0.62) 45%, rgba(5, 6, 5, 0.24) 100%),
+        linear-gradient(0deg, rgba(5, 6, 5, 0.8), transparent 50%),
+        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2200&q=90")
+          center / cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 0%, rgba(185, 152, 98, 0.09) 48%, transparent 75%);
+      content: "";
+    }
+
+    .hero-content {
+      max-width: 850px;
+      padding-top: 92px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 23px 0 25px;
+      color: var(--ivory);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(3.3rem, 8.7vw, 8.5rem);
+      font-weight: 800;
+      letter-spacing: -0.085em;
+      line-height: 0.86;
+      text-transform: uppercase;
+    }
+
+    .hero h1 em {
+      color: var(--gold-light);
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      text-transform: none;
+    }
+
+    .hero-description {
+      max-width: 520px;
+      color: var(--muted-light);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      right: 0;
+      bottom: 38px;
+      left: 0;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      color: var(--muted-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .hero-meta i {
+      color: var(--gold-light);
+    }
+
+    /* Intro */
+    .intro {
+      background: var(--black);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 90px;
+    }
+
+    .intro-copy h2 {
+      max-width: 580px;
+      margin: 17px 0 24px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+    }
+
+    .intro-copy h2 em {
+      color: var(--gold-light);
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .intro-copy p {
+      max-width: 510px;
+      margin-bottom: 25px;
+      color: var(--muted);
+    }
+
+    .intro-image-wrap {
+      position: relative;
+      min-height: 570px;
+    }
+
+    .intro-image {
+      height: 570px;
+      object-position: center;
+    }
+
+    .image-label {
+      position: absolute;
+      right: -1px;
+      bottom: 24px;
+      padding: 15px 18px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* Stats */
+    .stats {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 30px 22px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .stat:first-child {
+      border-left: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold-light);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* Programs */
+    .programs-section {
+      background: var(--surface);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .program-card {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+    }
+
+    .program-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      opacity: 0.58;
+      transition: 0.7s ease;
+    }
+
+    .program-card::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(5, 6, 5, 0.96), rgba(5, 6, 5, 0.08) 73%);
+      content: "";
+    }
+
+    .program-card:hover img {
+      opacity: 0.76;
+      transform: scale(1.08);
+    }
+
+    .program-number {
+      position: absolute;
+      z-index: 2;
+      top: 20px;
+      left: 21px;
+      color: var(--gold-light);
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+    }
+
+    .program-content {
+      position: absolute;
+      z-index: 2;
+      right: 22px;
+      bottom: 23px;
+      left: 22px;
+    }
+
+    .program-content h3 {
+      margin-bottom: 8px;
+      color: var(--ivory);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.43rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .program-content p {
+      min-height: 50px;
+      color: var(--muted-light);
+      font-size: 0.78rem;
+    }
+
+    .program-content .text-link {
+      margin-top: 15px;
+    }
+
+    /* Membership */
+    .membership-section {
+      background: var(--black);
+    }
+
+    .membership-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .membership-header .section-title {
+      margin-bottom: 0;
+    }
+
+    .membership-header > p {
+      max-width: 340px;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+      margin-top: 53px;
+    }
+
+    .price-card {
+      position: relative;
+      padding: 35px 30px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: 0.35s ease;
+    }
+
+    .price-card:hover {
+      border-color: var(--gold-dark);
+      transform: translateY(-8px);
+    }
+
+    .price-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(140deg, #171610, #111310);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 8px 14px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.57rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .price-card h3 {
+      margin-bottom: 18px;
+      color: var(--ivory);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--gold-light);
+      font-family: "Manrope", sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .price-card > p {
+      min-height: 52px;
+      margin: 17px 0 23px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .features {
+      display: grid;
+      gap: 12px;
+      min-height: 148px;
+      padding-top: 21px;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .features li {
+      color: var(--muted-light);
+      font-size: 0.8rem;
+    }
+
+    .features li i {
+      width: 20px;
+      color: var(--gold-light);
+    }
+
+    .price-card .button {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    /* Trainers */
+    .trainers-section {
+      background: var(--surface);
+    }
+
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .trainer-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+    }
+
+    .trainer-image-wrap {
+      position: relative;
+      height: 390px;
+      overflow: hidden;
+    }
+
+    .trainer-image {
+      height: 100%;
+      transition: 0.6s ease;
+    }
+
+    .trainer-card:hover .trainer-image {
+      transform: scale(1.05);
+    }
+
+    .trainer-socials {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      gap: 7px;
+    }
+
+    .trainer-socials a {
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--ivory);
+      font-size: 0.72rem;
+      transition: 0.25s ease;
+    }
+
+    .trainer-socials a:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+
+    .trainer-info {
+      padding: 22px;
+    }
+
+    .trainer-info h3 {
+      margin-bottom: 5px;
+      font-family: "Manrope", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .trainer-info p {
+      color: var(--gold-light);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Manifesto */
+    .manifesto {
+      background:
+        linear-gradient(90deg, rgba(9, 10, 9, 0.94), rgba(9, 10, 9, 0.68)),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2200&q=90")
+          center / cover fixed;
+    }
+
+    .manifesto-content {
+      max-width: 720px;
+    }
+
+    .manifesto h2 {
+      margin: 19px 0 27px;
+      color: var(--ivory);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.7rem, 6vw, 6rem);
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+    }
+
+    .manifesto p {
+      max-width: 530px;
+      margin-bottom: 29px;
+      color: var(--muted-light);
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      background: var(--black);
+    }
+
+    .testimonial {
+      max-width: 800px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .quote-mark {
+      color: var(--gold-light);
+      font-family: "Playfair Display", serif;
+      font-size: 5rem;
+      line-height: 0.7;
+    }
+
+    .testimonial-quote {
+      margin: 22px 0;
+      color: var(--ivory);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.7rem, 4vw, 3.3rem);
+      font-style: italic;
+      letter-spacing: -0.04em;
+      line-height: 1.25;
+    }
+
+    .testimonial-author {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-stars {
+      margin-top: 18px;
+      color: var(--gold-light);
+      letter-spacing: 0.24em;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .slider-button {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ivory);
+      transition: 0.25s ease;
+    }
+
+    .slider-button:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-light);
+      color: var(--black);
+    }
+
+    /* Gallery */
+    .gallery-section {
+      background: var(--surface);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr 1fr 0.9fr;
+      grid-auto-rows: 210px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--surface-2);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      transition: 0.55s ease;
+    }
+
+    .gallery-item:hover img {
+      opacity: 0.78;
+      transform: scale(1.08);
+    }
+
+    /* CTA */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .cta-section::before {
+      position: absolute;
+      right: -120px;
+      bottom: -240px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .cta-content h2 {
+      max-width: 750px;
+      margin-top: 13px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.08em;
+      line-height: 0.95;
+    }
+
+    .cta-content .button {
+      flex-shrink: 0;
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--ivory);
+    }
+
+    .cta-content .button:hover {
+      border-color: var(--surface-2);
+      background: var(--surface-2);
+    }
+
+    /* Contact */
+    .contact-section {
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .contact-copy h2 {
+      margin: 16px 0 22px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.08em;
+      line-height: 0.98;
+    }
+
+    .contact-copy > p {
+      max-width: 450px;
+      color: var(--muted);
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 18px;
+      margin-top: 33px;
+    }
+
+    .contact-info div {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-info span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold-light);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact-info a,
+    .contact-info p {
+      color: var(--muted-light);
+      font-size: 0.87rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      padding: 31px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      outline: none;
+      background: var(--surface-2);
+      color: var(--ivory);
+      padding: 13px 14px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--gold);
+    }
+
+    .contact-form textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .form-message {
+      display: none;
+      padding: 12px;
+      border-left: 2px solid var(--gold-light);
+      background: rgba(185, 152, 98, 0.11);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      padding: 75px 0 22px;
+      border-top: 1px solid var(--line);
+      background: var(--deep-black);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 45px;
+      padding-bottom: 60px;
+    }
+
+    .footer-brand p {
+      max-width: 310px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer h3 {
+      margin-bottom: 18px;
+      color: var(--gold-light);
+      font-size: 0.64rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .socials {
+      display: flex;
+      gap: 8px;
+      margin-top: 23px;
+    }
+
+    .socials a {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--line);
+      color: var(--muted-light);
+      transition: 0.25s ease;
+    }
+
+    .socials a:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #666c64;
+      font-size: 0.72rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      z-index: 2000;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.show {
+      display: grid;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(650px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 34px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.6rem;
+    }
+
+    .modal-close:hover {
+      color: var(--gold-light);
+    }
+
+    .modal-card h2 {
+      margin: 13px 0 8px;
+      color: var(--ivory);
+      font-family: "Manrope", sans-serif;
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      line-height: 1;
+    }
+
+    .modal-card > p {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .booking-form .form-row {
+      margin: 0;
+    }
+
+    .booking-form label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .booking-form input,
+    .booking-form select {
+      width: 100%;
+      border: 1px solid var(--line);
+      outline: none;
+      background: var(--surface-2);
+      color: var(--ivory);
+      padding: 13px;
+    }
+
+    .booking-form input:focus,
+    .booking-form select:focus {
+      border-color: var(--gold);
+    }
+
+    .booking-result {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-left: 2px solid var(--gold);
+      background: rgba(185, 152, 98, 0.1);
+      color: var(--muted-light);
+      font-size: 0.85rem;
+    }
+
+    .booking-result.show {
+      display: block;
+    }
+
+    .booking-result strong {
+      color: var(--gold-light);
+    }
+
+    /* Lightbox */
+    .lightbox-card {
+      width: min(1000px, 100%);
+      padding: 8px;
+      border: 0;
+      background: var(--deep-black);
+    }
+
+    .lightbox-card img {
+      max-height: 82vh;
+      object-fit: contain;
+    }
+
+    /* Responsive */
+    @media (max-width: 1080px) {
+      nav {
+        gap: 16px;
+      }
+
+      .header-cta {
+        display: none;
+      }
+
+      .intro-grid,
+      .contact-grid {
+        gap: 48px;
+      }
+
+      .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        width: min(calc(100% - 34px), var(--max-width));
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      header {
+        top: 31px;
+      }
+
+      .nav-inner {
+        min-height: 72px;
+      }
+
+      nav {
+        position: absolute;
+        top: 72px;
+        right: 0;
+        display: grid;
+        width: min(280px, calc(100vw - 34px));
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: rgba(9, 10, 9, 0.98);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: 0.3s ease;
+      }
+
+      nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      nav a {
+        padding: 13px 11px;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-content {
+        padding-top: 50px;
+      }
+
+      .hero-bottom {
+        bottom: 25px;
+      }
+
+      .hero-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .intro-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-image-wrap,
+      .intro-image {
+        min-height: 420px;
+        height: 420px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(n + 3) {
+        border-top: 1px solid var(--line);
+      }
+
+      .membership-header {
+        display: block;
+      }
+
+      .membership-header > p {
+        margin-top: 20px;
+      }
+
+      .pricing-grid,
+      .trainers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        max-width: 520px;
+      }
+
+      .trainer-image-wrap {
+        height: 430px;
+      }
+
+      .cta-content {
+        display: block;
+      }
+
+      .cta-content .button {
+        margin-top: 29px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .announcement {
+        min-height: 36px;
+        padding-inline: 12px;
+        font-size: 0.52rem;
+      }
+
+      header {
+        top: 36px;
+      }
+
+      .brand-name {
+        font-size: 0.66rem;
+      }
+
+      .hero {
+        min-height: 720px;
+        background-position: 63% center;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.3rem, 17vw, 5.8rem);
+      }
+
+      .hero-description {
+        font-size: 0.9rem;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .program-card {
+        min-height: 330px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 155px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .gallery-item:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form,
+      .modal-card {
+        padding: 23px 18px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-links {
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="announcement">
+    New members receive a complimentary movement assessment this month
+  </div>
 
-<header>
-<h1>GYM</h1>
+  <header id="siteHeader">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Vanta Athletics home">
+        <span class="brand-mark">VA</span>
+        <span class="brand-name">
+          VANTA ATHLETICS
+          <small>Discipline. Elevated.</small>
+        </span>
+      </a>
 
-<!-- Hamburger button for mobile -->
-<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+      <nav id="mainNav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#membership">Membership</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="ab.html">About</a>
-<a href="#programs">Programs</a>
-<a href="#membership">Membership</a>
-<a href="bmi.html">BMI</a>
+      <button class="button header-cta" data-open-booking>
+        Start Training <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </button>
 
-<div class="dropdown">
-    <a href="#">Gallery ▾</a>
-    <div class="dropdown-menu">
-        <a href="br.html">Branch 1</a>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
-</div>
+  </header>
 
-<a href="#contact">Contact</a>
-</nav>
-</header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Private performance club · Since 2014</div>
 
-<div class="hero">
-<div>
-<h2>BUILD <span>YOUR BODY</span><br>STRONGER</h2>
-<p>Modern equipment, expert trainers and result-oriented workout programs.</p>
-<a href="f.html" class="btn">Join Now</a>
-</div>
-</div>
+          <h1>
+            Build the<br />
+            <em>standard.</em>
+          </h1>
 
-<section id="programs">
-<h3>OUR PROGRAMS</h3>
-<div class="programs">
-<div class="card">
-<h4>Weight Training</h4>
-<p>Build muscle strength with structured gym workouts.</p>
-<a href="wt.html">View Program →</a>
-</div>
-<div class="card">
-<h4>Fat Loss</h4>
-<p>Effective cardio and fat-burn training plans.</p>
-<a href="ft.html">View Program →</a>
-</div>
-<div class="card">
-<h4>Cardio Training</h4>
-<p>Improve stamina and overall fitness.</p>
-<a href="cr.html">View Program →</a>
-</div>
-<div class="card">
-<h4>Personal Training</h4>
-<p>One-to-one expert guidance for faster results.</p>
-<a href="pt.html">View Program →</a>
-</div>
-</div>
-</section>
+          <p class="hero-description">
+            A refined training environment for people who refuse ordinary
+            results. Expert coaching, elevated equipment, and a culture built
+            around long-term performance.
+          </p>
 
-<section id="membership">
-<h3>MEMBERSHIP PLANS</h3>
-<div class="pricing">
-<div class="price-box">
-<h2>₹999</h2>
-<p>Monthly Plan</p>
-</div>
-<div class="price-box">
-<h2>₹2499</h2>
-<p>Quarterly Plan</p>
-</div>
-<div class="price-box">
-<h2>₹8999</h2>
-<p>Yearly Plan</p>
-</div>
-</div>
-</section>
+          <div class="hero-actions">
+            <button class="button" data-open-booking>
+              Book a Tour
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-<section id="contact">
-<h3>CONTACT US</h3>
-<p>📞 <a href="tel:9999999999">9XXXXXXXXX</a></p>
-<p>📧 <a href="mailto:info@olympusgym.com">info@olympusgym.com</a></p>
-</section>
+            <a href="#programs" class="button button-outline">
+              Explore Programs
+            </a>
+          </div>
+        </div>
+      </div>
 
-<footer>
-<p>© 2025 GYM | Strength • Discipline • Power</p>
-<div class="social">
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
-<a href="#"><i class="fab fa-x-twitter"></i></a>
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-</div>
-</footer>
+      <div class="hero-bottom">
+        <div class="container hero-meta">
+          <span><i class="fa-solid fa-location-dot"></i> Mumbai · Delhi · Bengaluru</span>
+          <span><i class="fa-regular fa-clock"></i> Open daily · 5:00 AM – 11:00 PM</span>
+          <span><i class="fa-solid fa-arrow-down"></i> Scroll to explore</span>
+        </div>
+      </div>
+    </section>
 
-<div class="dev-credit">
-<a href="https://rg18x.github.io/Profile/" target="_blank" style="color:inherit; text-decoration:none;">
-Developed by RG18
-</a>
-</div>
+    <section class="section intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-copy reveal">
+          <div class="eyebrow">Not just a gym</div>
 
-<script>
-// Toggle mobile nav
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
+          <h2>
+            Training is the work.
+            <em>Transformation is the result.</em>
+          </h2>
 
-menuToggle && menuToggle.addEventListener('click', () => {
-    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('open');
-});
+          <p>
+            Vanta Athletics is a premium training club designed for people who
+            take their health, performance, and time seriously.
+          </p>
 
-// Close menu when a link is clicked (mobile)
-nav && nav.addEventListener('click', (e) => {
-    const target = e.target;
-    if (target.tagName === 'A' && !target.closest('.dropdown')) {
-        // close nav on small screens
-        if (window.innerWidth <= 768) {
-            nav.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
+          <p>
+            Every detail is intentional: considered programming, expert
+            trainers, powerful equipment, and a focused atmosphere that makes
+            showing up feel different.
+          </p>
+
+          <a href="#membership" class="text-link">
+            Find your membership
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="intro-image-wrap reveal">
+          <img
+            class="intro-image"
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=90"
+            alt="Athlete training in a premium gym"
+          />
+          <div class="image-label">Performance, redefined</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong data-counter="10">0</strong>
+          <span>Years of excellence</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong data-counter="18">0</strong>
+          <span>Expert coaches</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong data-counter="4200">0</strong>
+          <span>Members transformed</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong data-counter="24">0</strong>
+          <span>Premium facilities</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section programs-section" id="programs">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Train with intention</div>
+          <h2>Programs that meet you where ambition begins.</h2>
+          <p>
+            Every program is designed around your goal, your body, and the
+            standard you want to hold yourself to.
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <article class="program-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=85"
+              alt="Strength training"
+            />
+            <span class="program-number">01</span>
+            <div class="program-content">
+              <h3>Strength Lab</h3>
+              <p>Build real strength through intelligent progressive training.</p>
+              <a href="wt.html" class="text-link">View program <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="program-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1000&q=85"
+              alt="Fat loss training"
+            />
+            <span class="program-number">02</span>
+            <div class="program-content">
+              <h3>Lean Protocol</h3>
+              <p>Structured conditioning and nutrition support for fat loss.</p>
+              <a href="ft.html" class="text-link">View program <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="program-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1000&q=85"
+              alt="Cardio training"
+            />
+            <span class="program-number">03</span>
+            <div class="program-content">
+              <h3>Engine Room</h3>
+              <p>Improve stamina, cardiovascular health, and daily energy.</p>
+              <a href="cr.html" class="text-link">View program <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="program-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=85"
+              alt="Personal training"
+            />
+            <span class="program-number">04</span>
+            <div class="program-content">
+              <h3>Private Coaching</h3>
+              <p>One-to-one coaching with a plan made entirely for you.</p>
+              <a href="pt.html" class="text-link">View program <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section membership-section" id="membership">
+      <div class="container">
+        <div class="membership-header">
+          <div class="section-title reveal">
+            <div class="eyebrow">Choose your commitment</div>
+            <h2>Membership without the noise.</h2>
+          </div>
+
+          <p class="reveal">
+            Simple plans, premium access, and the freedom to train at your own
+            pace.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Foundation</h3>
+            <div class="price">₹999 <small>/ month</small></div>
+            <p>For building consistency and finding your rhythm.</p>
+
+            <ul class="features">
+              <li><i class="fa-solid fa-check"></i> Full gym access</li>
+              <li><i class="fa-solid fa-check"></i> Standard equipment</li>
+              <li><i class="fa-solid fa-check"></i> Locker access</li>
+              <li><i class="fa-solid fa-check"></i> Fitness orientation</li>
+            </ul>
+
+            <button class="button button-outline" data-plan="Foundation">
+              Choose Foundation
+            </button>
+          </article>
+
+          <article class="price-card featured reveal">
+            <span class="popular-badge">Most popular</span>
+            <h3>Performance</h3>
+            <div class="price">₹2,499 <small>/ quarter</small></div>
+            <p>For serious progress with more support and flexibility.</p>
+
+            <ul class="features">
+              <li><i class="fa-solid fa-check"></i> Everything in Foundation</li>
+              <li><i class="fa-solid fa-check"></i> Monthly movement review</li>
+              <li><i class="fa-solid fa-check"></i> Group performance classes</li>
+              <li><i class="fa-solid fa-check"></i> Nutrition guidance</li>
+            </ul>
+
+            <button class="button" data-plan="Performance">
+              Choose Performance
+            </button>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Elite</h3>
+            <div class="price">₹8,999 <small>/ year</small></div>
+            <p>For members ready to make training part of their identity.</p>
+
+            <ul class="features">
+              <li><i class="fa-solid fa-check"></i> Everything in Performance</li>
+              <li><i class="fa-solid fa-check"></i> Priority trainer access</li>
+              <li><i class="fa-solid fa-check"></i> Quarterly body assessment</li>
+              <li><i class="fa-solid fa-check"></i> Recovery area access</li>
+            </ul>
+
+            <button class="button button-outline" data-plan="Elite">
+              Choose Elite
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trainers-section" id="trainers">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">People behind the progress</div>
+          <h2>Guidance from those who have done the work.</h2>
+          <p>
+            Our coaches combine experience, precision, and genuine care to make
+            your training more effective.
+          </p>
+        </div>
+
+        <div class="trainers-grid">
+          <article class="trainer-card reveal">
+            <div class="trainer-image-wrap">
+              <img
+                class="trainer-image"
+                src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=1000&q=85"
+                alt="Aarav Mehta, strength coach"
+              />
+              <div class="trainer-socials">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h3>Aarav Mehta</h3>
+              <p>Strength & Conditioning</p>
+            </div>
+          </article>
+
+          <article class="trainer-card reveal">
+            <div class="trainer-image-wrap">
+              <img
+                class="trainer-image"
+                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1000&q=85"
+                alt="Maya Kapoor, movement coach"
+              />
+              <div class="trainer-socials">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h3>Maya Kapoor</h3>
+              <p>Movement & Mobility</p>
+            </div>
+          </article>
+
+          <article class="trainer-card reveal">
+            <div class="trainer-image-wrap">
+              <img
+                class="trainer-image"
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=85"
+                alt="Rohan Singh, performance coach"
+              />
+              <div class="trainer-socials">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h3>Rohan Singh</h3>
+              <p>Performance & Conditioning</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section manifesto">
+      <div class="container">
+        <div class="manifesto-content reveal">
+          <div class="eyebrow">The Vanta standard</div>
+          <h2>Becoming stronger is a lifestyle, not a phase.</h2>
+          <p>
+            We believe your environment shapes your effort. That is why Vanta
+            is built to make discipline feel focused, considered, and
+            sustainable.
+          </p>
+          <a href="#contact" class="button">Visit the club <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="testimonial reveal">
+          <div class="eyebrow">Member perspective</div>
+          <div class="quote-mark">“</div>
+
+          <p class="testimonial-quote" id="testimonialQuote">
+            Vanta changed the way I think about training. It feels less like
+            visiting a gym and more like entering a space where progress is
+            expected.
+          </p>
+
+          <div class="testimonial-author" id="testimonialAuthor">
+            Nisha Arora · Member since 2021
+          </div>
+
+          <div class="testimonial-stars">★★★★★</div>
+
+          <div class="slider-controls">
+            <button class="slider-button" id="previousReview" aria-label="Previous testimonial">←</button>
+            <button class="slider-button" id="nextReview" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Inside Vanta</div>
+          <h2>A space designed to raise your standard.</h2>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=85"
+              alt="Premium gym interior"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+              alt="Strength training"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85"
+              alt="Athlete workout"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1100&q=85"
+              alt="Training area"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=85"
+              alt="Personal training session"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=85"
+              alt="Fitness training"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container cta-content reveal">
+        <div>
+          <div class="eyebrow">Your next chapter starts here</div>
+          <h2>Train like it matters.</h2>
+        </div>
+
+        <button class="button" data-open-booking>
+          Book your first visit
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <div class="eyebrow">Start a conversation</div>
+          <h2>Ready to raise your standard?</h2>
+          <p>
+            Tell us what you are working towards. Our team will help you choose
+            the right way to begin.
+          </p>
+
+          <div class="contact-info">
+            <div>
+              <span>Call us</span>
+              <a href="tel:+919999999999">+91 99999 99999</a>
+            </div>
+
+            <div>
+              <span>Email</span>
+              <a href="mailto:hello@vantaathletics.example">
+                hello@vantaathletics.example
+              </a>
+            </div>
+
+            <div>
+              <span>Club hours</span>
+              <p>Monday – Sunday · 5:00 AM – 11:00 PM</p>
+            </div>
+
+            <div>
+              <span>Location</span>
+              <p>12 Crescent Avenue, Mumbai, India</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+
+            <div>
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91" required />
+            </div>
+
+            <div>
+              <label for="goal">Primary goal</label>
+              <select id="goal" name="goal" required>
+                <option value="">Select goal</option>
+                <option>Build strength</option>
+                <option>Lose fat</option>
+                <option>Improve fitness</option>
+                <option>Personal training</option>
+                <option>General wellness</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us a little about your goal..."
+              required
+            ></textarea>
+          </div>
+
+          <button class="button" type="submit">
+            Send enquiry
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="form-message" id="contactMessage">
+            Thanks. Your enquiry has been received. Our team will contact you shortly.
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="brand">
+            <span class="brand-mark">VA</span>
+            <span class="brand-name">
+              VANTA ATHLETICS
+              <small>Discipline. Elevated.</small>
+            </span>
+          </a>
+
+          <p>
+            A premium private performance club for people who train with
+            purpose.
+          </p>
+
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="#about">About Vanta</a>
+            <a href="#programs">Programs</a>
+            <a href="#membership">Membership</a>
+            <a href="#trainers">Trainers</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Resources</h3>
+          <div class="footer-links">
+            <a href="bmi.html">BMI Calculator</a>
+            <a href="wt.html">Weight Training</a>
+            <a href="ft.html">Fat Loss</a>
+            <a href="pt.html">Personal Training</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="tel:+919999999999">+91 99999 99999</a>
+            <a href="mailto:hello@vantaathletics.example">hello@vantaathletics.example</a>
+            <span>12 Crescent Avenue<br />Mumbai, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> Vanta Athletics. All rights reserved.
+        <span style="float: right;">Built for better standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingHeading">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Close modal">×</button>
+
+      <div class="eyebrow">Your first visit</div>
+      <h2 id="bookingHeading">Book a private club tour.</h2>
+      <p>
+        Leave your details below and our membership team will contact you to
+        arrange your visit.
+      </p>
+
+      <form class="booking-form" id="bookingForm">
+        <div class="form-row">
+          <div>
+            <label for="bookingName">Full name</label>
+            <input id="bookingName" type="text" required placeholder="Your name" />
+          </div>
+
+          <div>
+            <label for="bookingPhone">Phone</label>
+            <input id="bookingPhone" type="tel" required placeholder="+91" />
+          </div>
+        </div>
+
+        <div>
+          <label for="bookingEmail">Email</label>
+          <input id="bookingEmail" type="email" required placeholder="you@example.com" />
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="bookingDate">Preferred date</label>
+            <input id="bookingDate" type="date" required />
+          </div>
+
+          <div>
+            <label for="bookingPlan">Interested in</label>
+            <select id="bookingPlan" required>
+              <option value="">Select plan</option>
+              <option>Foundation</option>
+              <option>Performance</option>
+              <option>Elite</option>
+              <option>Personal Training</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="button" type="submit">
+          Request a tour
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="booking-result" id="bookingResult"></div>
+    </div>
+  </div>
+
+  <!-- Gallery Lightbox -->
+  <div class="modal" id="lightboxModal" role="dialog" aria-modal="true">
+    <div class="modal-card lightbox-card">
+      <button class="modal-close" data-close-modal aria-label="Close image">×</button>
+      <img id="lightboxImage" src="" alt="" />
+    </div>
+  </div>
+
+  <div
+    style="
+      position: fixed;
+      right: 14px;
+      bottom: 12px;
+      z-index: 900;
+      color: #6e746b;
+      font-size: 11px;
+      opacity: 0.72;
+    "
+  >
+    <a href="https://rg18x.github.io/Profile/" target="_blank" rel="noopener">
+      Developed by RG18
+    </a>
+  </div>
+
+  <script>
+    const $ = (selector, parent = document) => parent.querySelector(selector);
+    const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+
+    const siteHeader = $("#siteHeader");
+    const mainNav = $("#mainNav");
+    const menuToggle = $("#menuToggle");
+    const bookingModal = $("#bookingModal");
+    const lightboxModal = $("#lightboxModal");
+
+    $("#year").textContent = new Date().getFullYear();
+
+    // Header scroll effect
+    function updateHeader() {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 35);
     }
-});
 
-// Make dropdown open on tap/click for mobile
-document.querySelectorAll('.dropdown > a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        // allow normal navigation if desktop (hover handles it)
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const parent = link.parentElement;
-            parent.classList.toggle('open');
-        }
+    window.addEventListener("scroll", updateHeader);
+    updateHeader();
+
+    // Mobile navigation
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
     });
-});
 
-// Close nav when clicking outside (optional, improves UX)
-document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768) {
-        const isClickInside = nav.contains(e.target) || menuToggle.contains(e.target);
-        if (!isClickInside) {
-            nav.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-        }
+    $$("#mainNav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    $$(".reveal").forEach((element) => revealObserver.observe(element));
+
+    // Modal helpers
+    function openModal(modal) {
+      modal.classList.add("show");
+      document.body.classList.add("modal-open");
     }
-});
-</script>
 
+    function closeModal(modal) {
+      modal.classList.remove("show");
+      document.body.classList.remove("modal-open");
+    }
+
+    $$("[data-open-booking]").forEach((button) => {
+      button.addEventListener("click", () => {
+        openModal(bookingModal);
+      });
+    });
+
+    $$("[data-close-modal]").forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(bookingModal);
+        closeModal(lightboxModal);
+      });
+    });
+
+    [bookingModal, lightboxModal].forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal(modal);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeModal(bookingModal);
+        closeModal(lightboxModal);
+      }
+    });
+
+    // Membership buttons preselect plan
+    $$("[data-plan]").forEach((button) => {
+      button.addEventListener("click", () => {
+        openModal(bookingModal);
+        $("#bookingPlan").value = button.dataset.plan;
+      });
+    });
+
+    // Booking form
+    const bookingDate = $("#bookingDate");
+    bookingDate.min = new Date().toISOString().split("T")[0];
+
+    $("#bookingForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const result = $("#bookingResult");
+      const name = $("#bookingName").value.trim();
+      const plan = $("#bookingPlan").value;
+      const date = $("#bookingDate").value;
+
+      const reference =
+        "VA-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+
+      result.innerHTML = `
+        <strong>Tour request received.</strong><br />
+        Thank you, ${name}. Our team will contact you about your ${plan}
+        enquiry for ${date}. Reference: <strong>${reference}</strong>
+      `;
+
+      result.classList.add("show");
+      event.target.reset();
+    });
+
+    // Contact form
+    $("#contactForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const message = $("#contactMessage");
+      message.classList.add("show");
+      event.target.reset();
+
+      setTimeout(() => {
+        message.classList.remove("show");
+      }, 7000);
+    });
+
+    // Gallery lightbox
+    $$(".gallery-item img").forEach((image) => {
+      image.addEventListener("click", () => {
+        $("#lightboxImage").src = image.src;
+        $("#lightboxImage").alt = image.alt;
+        openModal(lightboxModal);
+      });
+    });
+
+    // Testimonials
+    const testimonials = [
+      {
+        quote:
+          "Vanta changed the way I think about training. It feels less like visiting a gym and more like entering a space where progress is expected.",
+        author: "Nisha Arora · Member since 2021"
+      },
+      {
+        quote:
+          "The coaching is precise, the equipment is exceptional, and the atmosphere makes consistency feel natural. I have never trained better.",
+        author: "Kabir Malhotra · Performance member"
+      },
+      {
+        quote:
+          "What stood out was the attention to detail. Every session has a purpose, and every coach genuinely understands the individual.",
+        author: "Ishita Rao · Private coaching member"
+      }
+    ];
+
+    let testimonialIndex = 0;
+
+    function renderTestimonial() {
+      const testimonial = testimonials[testimonialIndex];
+      $("#testimonialQuote").textContent = testimonial.quote;
+      $("#testimonialAuthor").textContent = testimonial.author;
+    }
+
+    $("#nextReview").addEventListener("click", () => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      renderTestimonial();
+    });
+
+    $("#previousReview").addEventListener("click", () => {
+      testimonialIndex =
+        (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+      renderTestimonial();
+    });
+
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      renderTestimonial();
+    }, 6500);
+
+    // Animated counters
+    const counters = $$("[data-counter]");
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const element = entry.target;
+          const target = Number(element.dataset.counter);
+          const duration = 1300;
+          const start = performance.now();
+
+          function animate(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.floor(target * eased);
+
+            element.textContent =
+              target >= 1000
+                ? value.toLocaleString("en-IN") + "+"
+                : value + "+";
+
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+
+          requestAnimationFrame(animate);
+          observer.unobserve(element);
+        });
+      },
+      { threshold: 0.7 }
+    );
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+
+    // Close navigation when clicking outside
+    document.addEventListener("click", (event) => {
+      if (
+        window.innerWidth <= 800 &&
+        !mainNav.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+  </script>
 </body>
 </html>
 
+
+Images Unsplash se aa rahi hain, isliye website open karte waqt internet connection zaroori hoga.
